@@ -1,24 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import uuid from "react-uuid";
+import Todo from "./components/Todo";
+import Input from "./components/Input";
 
 function App() {
+  const initialState = [
+    {
+      id: uuid(),
+      title: "제목1",
+      contents: "내용1",
+      isDone: false,
+    },
+    {
+      id: uuid(),
+      title: "제목2",
+      contents: "내용2",
+      isDone: true,
+    },
+    {
+      id: uuid(),
+      title: "제목3",
+      contents: "내용3",
+      isDone: false,
+    },
+  ];
+
+  const [todos, setTodos] = useState(initialState);
+  const [title, setTitle] = useState("");
+  const [contents, setContents] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header
+        style={{
+          backgroundColor: "#c4a4eb",
+        }}
+      >
+        헤더
       </header>
-    </div>
+      <main>
+        <Input
+          title={title}
+          contents={contents}
+          todos={todos}
+          setTodos={setTodos}
+          setTitle={setTitle}
+          setContents={setContents}
+        />
+        <Todo todos={todos} setTodos={setTodos} isDone={false} />
+        <Todo todos={todos} setTodos={setTodos} isDone={true} />
+      </main>
+      <footer
+        style={{
+          backgroundColor: "#a4e8eb",
+        }}
+      >
+        푸터
+      </footer>
+    </>
   );
 }
 
