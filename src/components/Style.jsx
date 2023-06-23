@@ -105,3 +105,44 @@ export const CompleteButton = styled.button`
     background-color: #26ad2c;
   }
 `;
+export const SubContainer = styled.div`
+  background-color: #ffffff;
+  width: 100%;
+  height: 800px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const SubCard = styled.div`
+  width: 300px;
+  height: 300px;
+  background-color: #c6a6ed;
+  border: 5px groove #c4a4eb;
+  padding: 20px;
+  font-size: 20px;
+`;
+
+export const SubPageButton = styled.button`
+  background-color: #f0e784;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #c9c26b;
+  }
+`;
+
+export const MainPageButton = styled.button`
+  background-color: #f0e784;
+  color: white;
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: #c9c26b;
+  }
+`;

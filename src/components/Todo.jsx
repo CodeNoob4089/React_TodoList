@@ -5,13 +5,15 @@ import {
   ButtonGroup,
   DeleteButton,
   CompleteButton,
+  SubPageButton,
 } from "./Style";
 import { useDispatch, useSelector } from "react-redux";
 import { deletetodo, swichtodo } from "../redux/modules/todo";
+import { useNavigate } from "react-router-dom";
 
 function Todo({ isDone }) {
   const data = useSelector((storeState) => storeState.todoReducer.todos);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
     <TodoContainer>
@@ -24,6 +26,13 @@ function Todo({ isDone }) {
           .map(function (todo) {
             return (
               <TodoItem key={todo.id}>
+                <SubPageButton
+                  onClick={() => {
+                    navigate(`sub/${todo.id}`);
+                  }}
+                >
+                  상세페이지
+                </SubPageButton>
                 <h3>{todo.title}</h3>
                 <p>{todo.contents}</p>
                 <p>{todo.isDone.toString()}</p>
