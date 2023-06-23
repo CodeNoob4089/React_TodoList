@@ -1,62 +1,34 @@
 import React, { useState } from "react";
-import uuid from "react-uuid";
 import Todo from "./components/Todo";
 import Input from "./components/Input";
-
+import Layout from "./components/Layout";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 function App() {
-  const initialState = [
-    {
-      id: uuid(),
-      title: "제목1",
-      contents: "내용1",
-      isDone: false,
-    },
-    {
-      id: uuid(),
-      title: "제목2",
-      contents: "내용2",
-      isDone: true,
-    },
-    {
-      id: uuid(),
-      title: "제목3",
-      contents: "내용3",
-      isDone: false,
-    },
-  ];
-
-  const [todos, setTodos] = useState(initialState);
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
 
+  const onChangeTitle = (event) => {
+    setTitle(event.target.value);
+  };
+  const onChangeContents = (event) => {
+    setContents(event.target.value);
+  };
+
   return (
     <>
-      <header
-        style={{
-          backgroundColor: "#c4a4eb",
-        }}
-      >
-        헤더
-      </header>
-      <main>
+      <Layout>
+        <Header />
         <Input
           title={title}
           contents={contents}
-          todos={todos}
-          setTodos={setTodos}
-          setTitle={setTitle}
-          setContents={setContents}
+          onChangeTitle={onChangeTitle}
+          onChangeContents={onChangeContents}
         />
-        <Todo todos={todos} setTodos={setTodos} isDone={false} />
-        <Todo todos={todos} setTodos={setTodos} isDone={true} />
-      </main>
-      <footer
-        style={{
-          backgroundColor: "#a4e8eb",
-        }}
-      >
-        푸터
-      </footer>
+        <Todo isDone={false} />
+        <Todo isDone={true} />
+        <Footer />
+      </Layout>
     </>
   );
 }
